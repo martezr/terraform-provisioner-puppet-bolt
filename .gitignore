@@ -16,3 +16,4 @@ terraform-provisioner-puppet-bolt
 vsphere.auto.tfvars
 *.tf
 *.log
+.terraform
