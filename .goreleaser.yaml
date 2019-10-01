@@ -1,0 +1,34 @@
+# Configuration for https://goreleaser.com/
+project_name: terraform-provisioner-puppet-bolt
+
+builds:
+  - id: terraform-provisioner-puppet-bolt
+    binary: terraform-provisioner-puppet-bolt
+    main: main.go
+    goos:
+      - freebsd
+      - windows
+      - linux
+      - darwin
+    goarch:
+      - amd64
+      - arm
+      - arm64
+      - 386
+    env:
+      - CGO_ENABLED=0
+
+archives:
+  - id: terraform-provisioner-puppet-bolt
+    builds: [ terraform-provisioner-puppet-bolt ]
+    format_overrides:
+      - goos: windows
+        format: zip
+    replacements:
+      darwin: Darwin
+      linux: Linux
+      windows: Windows
+      386: i386
+      amd64: x86_64
+    files:
+      - none*
